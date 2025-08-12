@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <!-- Main window layout and size -->
+  <plot_config>
+    <main_tree>
+      <TabWidget>
+        <tab name="RC Car Telemetry">
+          <!-- Arrange plots horizontally (2 columns, 1 row) -->
+          <Splitter orientation="horizontal">
+            <widget pos="0" name="Plot_1">
+              <!-- Left plot: Wheel Velocities Superimposed -->
+              <plot>
+                <plot_title>Wheel Velocities</plot_title>
+                <y_axis_label>Velocity (m/s)</y_axis_label>
+                <x_axis_sync/>
+                <!-- Curve 1: Left Wheel Velocity (linear.y) -->
+                <curve name="/vehicle_current_steering_vel.linear.x" color="#1f77b4" display_name="Left Wheel"/>
+                <!-- Curve 2: Right Wheel Velocity (linear.x) -->
+                <curve name="/vehicle_current_steering_vel.linear.y" color="#ff7f0e" display_name="Right Wheel"/>
+              </plot>
+            </widget>
+            <widget pos="1" name="Plot_2">
+              <!-- Right plot: Steering Angle -->
+              <plot>
+                <plot_title>Steering Angle</plot_title>
+                <y_axis_label>Angle (rad)</y_axis_label>
+                <x_axis_sync/>
+                <!-- Curve 3: Steering Angle (angular.z) -->
+                <curve name="/vehicle_current_steering_vel.angular.z" color="#2ca02c" display_name="Steering Angle"/>
+              </plot>
+            </widget>
+          </Splitter>
+        </tab>
+      </TabWidget>
+    </main_tree>
+  </plot_config>
+
+  <!-- Tells PlotJuggler to source data from ROS -->
+  <data_source>
+    <streamer type="ROS">
+      <ros_master_uri>http://192.168.50.119:11311</ros_master_uri>
+      <ros_topics>
+        <topic name="/vehicle_current_steering_vel"/>
+      </ros_topics>
+    </streamer>
+  </data_source>
+</root>
