@@ -16,12 +16,13 @@
 
 class joy_vel_publisher {
 public:
-    joy_vel_publisher(ros::NodeHandle& nh, int cmd_rate) {
+  joy_vel_publisher(ros::NodeHandle& nh, int cmd_rate) 
+  {
 	vel_cmd_rate = cmd_rate;
 	
 	joy_sub = nh.subscribe("/joy", 1, &joy_vel_publisher::joyCallback, this);
 	steering_vel_pub = nh.advertise<geometry_msgs::Twist>("vehicle_target_steering_vel", 1);
-    }
+  }
 
     void joyCallback(const sensor_msgs::Joy::ConstPtr& joy) {
         motion_enable = joy->buttons[ENABLE_BUTTON];
