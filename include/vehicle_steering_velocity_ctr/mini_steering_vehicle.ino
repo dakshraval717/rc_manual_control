@@ -175,7 +175,7 @@ void timerCallback() {
 //  delay(5);
     
   //wait for the steering motor to reach its target position and then drive the rear motors (could be improved with other techniques)
-  if(steering_pos_diff <= 10) {
+  // if(steering_pos_diff <= 10) {
     //zero speed operation: let both rear motors brake
     if(wheel_ctr.target_vel_L == 0 && wheel_ctr.target_vel_R == 0) {
       ledcWrite(motor_left_channel1, 1000);
@@ -196,13 +196,13 @@ void timerCallback() {
       wheel_ctr.err_pre_preL = wheel_ctr.err_preL; 
       wheel_ctr.err_pre_preR = wheel_ctr.err_preR;      
     }
-  }
-  else {
-    ledcWrite(motor_left_channel1, 0);
-    ledcWrite(motor_left_channel2, 0);
-    ledcWrite(motor_right_channel1, 0);
-    ledcWrite(motor_right_channel2, 0);
-  }
+  // }
+  // else {
+  //   ledcWrite(motor_left_channel1, 0);
+  //   ledcWrite(motor_left_channel2, 0);
+  //   ledcWrite(motor_right_channel1, 0);
+  //   ledcWrite(motor_right_channel2, 0);
+  // }
 
   motor_left_old = motor_left_counter;
   motor_right_old = motor_right_counter;
