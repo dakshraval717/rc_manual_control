@@ -47,7 +47,7 @@ class RCCarInterface:
 
     def executeLaunch(self, carID):
         scriptPath = os.path.expanduser(
-            f"~/catkin_ws/src/real-time-ui/launch-car-{carID}/terminator.sh"
+            f"~/catkin_ws/src/rc-car/user-interface/launch-car-{carID}/terminator.sh"
         )
         subprocess.call(['bash', scriptPath])
 
